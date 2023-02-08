@@ -1,0 +1,106 @@
+instsall laravel
+install breeze
+
+config sqlite ,, pojo path sqlite ..
+
+config home provider 
+
+
+
+
+
+
+config sqlite
+
+desde tinker ver tablas..
+DB::select('select * from sqlite_master where type="table"')
+
+
+installl 
+composer require livewire/livewire
+
+
+
+crear component livewrire 
+
+php artisan make:livewire FirstComponent
+
+php artisan make:livewire ProductsIndex
+
+
+MODELOS 
+
+php artisan make:model Category -mc
+
+
+php artisan make:model Product -mcf
+php artisan make:model Movement -mcf
+php artisan make:model Category -mcf
+
+
+creamos factory  
+database seeed 
+
+php artisan make:migrate --seed
+
+creamos componente de pagina .. todos los productos ...
+creamos componente de un solo producto ...
+
+
+dreado product show ...
+
+
+creo pdroductos 
+    lista de productos  
+            show un producto 
+
+                    ahora ver movements product
+
+php artisan make:livewire ProductMovements
+    desde product.show .. 
+            muestro este componente 
+                que lista todos los movimientos 
+                     un movimiento = productmovement
+
+
+        /productController -> index 
+
+            app-layout
+                livewire products-index
+
+            app-layout
+                main
+                    create-product 
+
+                    slot  -->  product-index 
+
+
+            create-product 
+                form  submit createproduct
+                    
+
+
+SECCION 6 
+23  componente fetch ideas
+
+
+24 STATUS FILTER 
+
+php artisan make:livewire StatusFilters
+
+
+
+
+SEECION 9 EDIT IDEA
+
+37 MODAL CSS 
+
+
+
+
+
+
+
+
+
+
