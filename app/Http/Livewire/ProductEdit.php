@@ -16,14 +16,14 @@ class ProductEdit extends Component
     public $category = 1;
     public $description;
     public $code;
-    public $ean ='ean';
+    public $ean = 'ean';
     public $name;
     public $price;
-    public $medida='Kg';
-    public $status= true;
+    public $medida = 'Kg';
+    public $status = true;
 
 
-    public $medidas = ['Kg','Unidad','Litros','Gr'];
+    public $medidas = ['Kg', 'Unidad', 'Litros', 'Gr'];
 
 
     public function mount(Product $product)
@@ -38,13 +38,12 @@ class ProductEdit extends Component
         $this->price = $product->price;
         $this->medida = $product->medida;
         $this->status = $product->status;
-        
     }
 
     protected $rules = [
         'code' => 'required|min:4',
         'name' => 'required',
-       // 'ean' => 'required|min:4',
+        // 'ean' => 'required|min:4',
 
         'category' => 'required|integer|exists:categories,id',
         'description' => 'required|min:4',
@@ -55,15 +54,10 @@ class ProductEdit extends Component
     ];
 
 
-    public function createProduct()
+    public function updateProduct()
     {
-        if (auth()->guest()) {
-            abort(Response::HTTP_FORBIDDEN);
-        }
 
-        $this->validate();
-
-        $product = Product::create([
+        $this->product->update([
 
             //'user_id' => auth()->id(),
             'category_id' => $this->category,
@@ -79,9 +73,11 @@ class ProductEdit extends Component
 
         ]);
 
+        $this->emit('productUpdated');
+
         //$idea->vote(auth()->user());
 
-        session()->flash('success_message', 'Product was added successfully!');
+        session()->flash('success_message', 'Product was updated successfully!');
 
         $this->reset();
 

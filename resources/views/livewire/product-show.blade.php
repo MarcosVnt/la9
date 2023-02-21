@@ -49,7 +49,7 @@
                                 @click.away="isOpen = false"
                                 @keydown.escape.window="isOpen = false"
                             >
-                              {{--   @can('update', $product) --}}
+                                {{-- @can('update', $product)  --}}
                                 <li>
                                     <a
                                         href="#"
@@ -59,12 +59,12 @@
                                         "
                                         class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3"
                                     >
-                                        Edit Idea
+                                        Editar Producto
                                     </a>
                                 </li>
-                             {{--    @endcan --}}
+                               {{--  @endcan  --}}
 
-                                @can('delete', $product)
+                               {{--  @can('delete', $product) --}}
                                 <li>
                                     <a
                                         href="#"
@@ -74,10 +74,10 @@
                                         "
                                         class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3"
                                     >
-                                        Delete Idea
+                                        Eliminar Producto y movimientos.
                                     </a>
                                 </li>
-                                @endcan
+                               {{--  @endcan --}}
 
                                 <li>
                                     <a
@@ -126,12 +126,12 @@
                                 Voted
                             </button>
                         @else --}}
-                            <button
+                           {{--  <button
                                 wire:click.prevent="vote"
                                 class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3 -mx-5"
                             >
                                 Vote
-                            </button>
+                            </button> --}}
                         {{-- @endif --}}
                     </div>
                 </div>
@@ -164,13 +164,13 @@
                     <span>Voted</span>
                 </button>
             @else --}}
-                <button
+                {{-- <button
                     type="button"
                     wire:click.prevent="vote"
                     class="w-32 h-11 text-xs bg-gray-200 font-semibold uppercase rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3"
                 >
                     <span>Vote</span>
-                </button>
+                </button> --}}
            {{--  @endif --}}
         </div>
     </div> <!-- end buttons-container -->

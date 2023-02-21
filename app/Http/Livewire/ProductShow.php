@@ -10,6 +10,11 @@ class ProductShow extends Component
 
     public $product; 
 
+    protected $listeners = [
+       
+        'productWasUpdated',
+    ];
+
 
     public function mount(Product $product)
     {
@@ -18,6 +23,12 @@ class ProductShow extends Component
       /*   $this->votesCount = $votesCount;
         $this->hasVoted = $idea->isVotedByUser(auth()->user()); */
     }
+
+    public function productWasUpdated()
+    {
+        $this->product->refresh();
+    }
+
 
 
     public function render()

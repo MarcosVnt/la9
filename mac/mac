@@ -95,12 +95,57 @@ SEECION 9 EDIT IDEA
 
 37 MODAL CSS 
 
+php artisan make:livewire EditIdea
+
+
+
+DELETE IDEA 
+
+php artisan make:livewire ProductDelete
+
+php artisan make:policy ProductPolicy --model=Product
+
+
+
+test borrar ...
+php artisan make:test DeleteProductTest
+
+
+
+
+52 test  show add comments
+
+php artisan make:test comments/AddComentsTest
+php artisan make:test comments/ShowComentsTest
+
+
+
+
+
+php artisan migrate:fresh --seed
+
+
+php artisan test --filter ShowComentsTest
+
+
+53 edit comments 
+*******************************************
+php artisan livewire:make MovementEdit
 
 
 
 
 
 
-
-
-
+…or create a new repository on the command line
+echo "# la9" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/MarcosVnt/la9.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/MarcosVnt/la9.git
+git branch -M main
+git push -u origin main

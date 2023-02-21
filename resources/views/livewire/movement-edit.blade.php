@@ -1,51 +1,13 @@
 <div
-    x-data="{ isOpen: false , tipo :'salida'}"
+    x-data="{ isOpen: true }"
+    x-init="  Livewire.on('editMovementWasSet', () => {
+        isOpen = true
+        $nextTick(() => $refs.cantidad.focus())
+    })"
   
     class="relative"
 >
-    <div class="flex flex-grow">
-    <button
-        type="button"
-        @click="
-            isOpen = !isOpen
-            $refs.tipo = 'entrada'
-            if (isOpen) {
-                $nextTick(() => $refs.cantidad.focus())
-            }
-        "
-        class="flex items-center justify-center h-11 w-32 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 ml-4"
-    >
-        Entrada
-    </button>
-    <button
-        type="button"
-        @click="
-            isOpen = !isOpen
-            tipo = 'salida'
-            if (isOpen) {
-                $nextTick(() => $refs.cantidad.focus())
-            }
-        "
-        class="flex items-center justify-center pl-4 h-11 w-32 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 ml-4"
-    >
-        Salida
-    </button>
-    <button
-        type="button"
-        @click="
-            isOpen = !isOpen
-            tipo = 'recuento'
-            
-            
-            if (isOpen) {
-                $nextTick(() => $refs.cantidad.focus())
-            }
-        "
-        class="flex items-center justify-center h-11 w-32 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 ml-4"
-    >
-        Recuento
-    </button>
-</div>
+   
     <div
         class="absolute z-10 w-64 md:w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2"
         x-cloak
@@ -56,23 +18,22 @@
         @auth
             <form wire:submit.prevent="addComment" action="#" class="space-y-4 px-4 py-6">
                 <div>
-                   Producto :<span v-text="tipo"></span>
+                   Producto :
                    <div>
-                    {{$product->name}}
+                    {{$product}}
                     </div>
                 </div>
 
                 <div>
                     
                     <div>
-                    {{$product->tipo }}
+                    {{$tipo}}
                      </div>
                  </div>
                 <div>
                     Tipo de Movimiento : 
 
-                        <select x-ref="tipo" wire:model="tipo" name="tipo" id="tipo" class="w-full rounded-xl border-none px-4 py-2">
-                            <option  value="">Seleccione Tipo Movimiento</option>
+                        <select wire:model="tipo" name="tipo" id="tipo" class="w-full rounded-xl border-none px-4 py-2">
                             <option  value="entrada">Entrada</option>
                             <option value="salida">Salida</option>
                             <option  value="recuento">Recuento</option>
@@ -81,9 +42,6 @@
                                 <option value="Spam Comments">Spam Comments</option>
                             @endadmin --}}
                         </select>
-                        @error('tipo')
-                        <p class="text-red text-xs mt-1">{{ $message }}</p>
-                    @enderror
                   
                 </div>
                 <div class="w-full md:w-1/3"  >
@@ -97,8 +55,8 @@
                     
                 </div>
                 <div class="w-full md:w-1/3">
-                    {{$product->medida}}
-                </div>
+                    {{$medida}} 
+                </div> 
                 <div>
                    
                     Lote: 

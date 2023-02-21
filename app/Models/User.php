@@ -41,4 +41,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function isAdmin()
+    {
+        return in_array($this->email, [
+            'jeffrey@laracasts.com',
+            'andre_madarang@hotmail.com',
+            'adrian@laracasts.com,'
+        ]);
+    }
+
+    public function movements()
+    {
+        return $this->hasMany(Movement::class);
+    }
+
 }

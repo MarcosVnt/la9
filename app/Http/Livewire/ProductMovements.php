@@ -21,7 +21,7 @@ class ProductMovements extends Component
         return view('livewire.product-movements', [
 
             // 'comments' => $this->idea->comments()->paginate()->withQueryString(),
-            'movements' => Movement::with(['user'])->where('product_id', $this->product->id)->paginate()->withQueryString(),
+            'movements' => Movement::with(['user'])->where('product_id', $this->product->id)->orderBy('created_at','DESC')->paginate()->withQueryString(),
         ]);
     }
 }

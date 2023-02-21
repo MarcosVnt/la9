@@ -5,10 +5,10 @@
     @keydown.escape.window="isOpen = false"
     @custom-show-edit-modal.window="
         isOpen = true
-        $nextTick(() => $refs.title.focus())
+        $nextTick(() => $refs.name.focus())
     "
     x-init="
-        window.livewire.on('ideaWasUpdated', () => {
+        window.livewire.on('productWasUpdated', () => {
             isOpen = false
         })
     "
@@ -40,11 +40,12 @@
             </div>
 
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <h3 class="text-center text-lg font-medium text-gray-900">Edit Idea</h3>
-                <p class="text-xs text-center leading-5 text-gray-500 px-6 mt-4">You have one hour to edit your idea from the time you created it.</p>
+                <h3 class="text-center text-lg font-medium text-gray-900">Editar Producto</h3>
+               {{--  <p class="text-xs text-center leading-5 text-gray-500 px-6 mt-4">You have one hour to edit your idea from the time you created it.</p> --}}
 
-                <form wire:submit.prevent="updateIdea" action="#" method="POST" class="space-y-4 px-4 py-6">
+                <form wire:submit.prevent="updateProduct" action="#" method="POST" class="space-y-4 px-4 py-6">
                     <div>
+                        Categoria:
                         <select wire:model.defer="category" name="category_add" id="category_add" class="w-full bg-gray-100 text-sm rounded-xl border-none px-4 py-2 mb-4">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -56,28 +57,29 @@
                     @enderror
                     
                     <div>
-                        <input wire:model.defer="name" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-4" placeholder="Tu Producto" required>
+                        Nombre
+                        <input wire:model.defer="name" type="text" x-ref="name" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-2" placeholder="Tu Producto" required>
                         @error('name')
                             <p class="text-red text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
                     <div>
-                        <input wire:model.defer="code" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-4" placeholder="Tu Codigo" required>
+                        Codigo:
+                        <input wire:model.defer="code" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-2" placeholder="Tu Codigo" required>
                         @error('code')
                             <p class="text-red text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
         
                     <div>
-                        <input wire:model.defer="price" type="number" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-4" placeholder="Tu precio" required>
+                        Precio:
+                        <br>
+                        <input wire:model.defer="price" type="number" class="w-1/2 text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-2" placeholder="Tu precio" required>
                         @error('price')
                             <p class="text-red text-xs mt-1">{{ $message }}</p>
                         @enderror
-                    </div>
-        
-        
-                    <div>
-                        <select wire:model.defer="medida" name="medida_add" id="medida_add" class="w-full bg-gray-100 text-sm rounded-xl border-none px-4 py-2 mb-4">
+                   
+                        <select wire:model.defer="medida" name="medida_add" id="medida_add" class="w-1/3 bg-gray-100 text-sm rounded-xl border-none px-4 py-2 mb-2">
                             @foreach ($medidas as $medida)
                                 <option value="{{ $medida }}">{{ $medida }}</option>
                             @endforeach
@@ -87,24 +89,24 @@
                         <p class="text-red text-xs mt-1">{{ $message }}</p>
                     @enderror
                     <div>
-                        <textarea wire:model.defer="description" name="idea" id="idea" cols="30" rows="4" class="w-full bg-gray-100 rounded-xl border-none placeholder-gray-900 text-sm px-4 py-2 mb-4" placeholder="Describe your idea" required></textarea>
+                        <textarea wire:model.defer="description" name="idea" id="idea" cols="30" rows="4" class="w-full bg-gray-100 rounded-xl border-none placeholder-gray-900 text-sm px-4 py-2 mb-2" placeholder="Describe your idea" required></textarea>
                         @error('description')
                             <p class="text-red text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="flex items-center justify-between space-x-3">
-                        <button
+                       {{--  <button
                                 type="button"
                                 class="flex items-center justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
                             <svg class="text-gray-600 w-4 transform -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                             </svg>
                             <span class="ml-1">Attach</span>
-                        </button>
+                        </button> --}}
                         <button
                                 type="submit"
                                 class="flex items-center justify-center w-1/2 h-11 text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
-                            <span class="ml-1">Update</span>
+                            <span class="ml-1">Actualizar</span>
                         </button>
                     </div>
                 </form>
