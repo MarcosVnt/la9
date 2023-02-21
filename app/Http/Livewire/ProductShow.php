@@ -20,6 +20,8 @@ class ProductShow extends Component
     {
         $this->product = $product;
 
+       
+
       /*   $this->votesCount = $votesCount;
         $this->hasVoted = $idea->isVotedByUser(auth()->user()); */
     }

@@ -1,5 +1,5 @@
 <div
-    x-data="{ isOpen: true }"
+    x-data="{ isOpen: false }"
     x-init="  Livewire.on('editMovementWasSet', () => {
         isOpen = true
         $nextTick(() => $refs.cantidad.focus())
@@ -16,7 +16,7 @@
         @keydown.escape.window="isOpen = false"
     >
         @auth
-            <form wire:submit.prevent="addComment" action="#" class="space-y-4 px-4 py-6">
+            <form wire:submit.prevent="addMovement" action="#" class="space-y-4 px-4 py-6">
                 <div>
                    Producto :
                    <div>

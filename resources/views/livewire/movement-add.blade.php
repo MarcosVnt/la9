@@ -1,6 +1,12 @@
 <div
-    x-data="{ isOpen: false , tipo :'salida'}"
-  
+    x-data="{
+        isOpen: false
+    }"
+    x-init="
+        Livewire.on('movementWasAdded', () => {
+            isOpen=false
+        })
+    "
     class="relative"
 >
     <div class="flex flex-grow">
@@ -8,43 +14,16 @@
         type="button"
         @click="
             isOpen = !isOpen
-            $refs.tipo = 'entrada'
+           
             if (isOpen) {
                 $nextTick(() => $refs.cantidad.focus())
             }
         "
         class="flex items-center justify-center h-11 w-32 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 ml-4"
     >
-        Entrada
+        Añadir Movimiento
     </button>
-    <button
-        type="button"
-        @click="
-            isOpen = !isOpen
-            tipo = 'salida'
-            if (isOpen) {
-                $nextTick(() => $refs.cantidad.focus())
-            }
-        "
-        class="flex items-center justify-center pl-4 h-11 w-32 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 ml-4"
-    >
-        Salida
-    </button>
-    <button
-        type="button"
-        @click="
-            isOpen = !isOpen
-            tipo = 'recuento'
-            
-            
-            if (isOpen) {
-                $nextTick(() => $refs.cantidad.focus())
-            }
-        "
-        class="flex items-center justify-center h-11 w-32 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 ml-4"
-    >
-        Recuento
-    </button>
+    
 </div>
     <div
         class="absolute z-10 w-64 md:w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2"
@@ -54,7 +33,7 @@
         @keydown.escape.window="isOpen = false"
     >
         @auth
-            <form wire:submit.prevent="addComment" action="#" class="space-y-4 px-4 py-6">
+            <form wire:submit.prevent="addMovement" action="#" class="space-y-4 px-4 py-6">
                 <div>
                    Producto :<span v-text="tipo"></span>
                    <div>
@@ -86,23 +65,25 @@
                     @enderror
                   
                 </div>
-                <div class="w-full md:w-1/3"  >
-                   
-                   Cantidad: 
-                        <input x-ref="cantidad" wire:model.defer="cantidad" type="number" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-4" placeholder="Cantidad" required>
-                        @error('cantidad')
-                            <p class="text-red text-xs mt-1">{{ $message }}</p>
-                        @enderror
-                       
+                <div class="flex flex-row">
+                    <div class="w-full md:w-1/3 ml-4"  >
                     
-                </div>
-                <div class="w-full md:w-1/3">
-                    {{$product->medida}}
-                </div>
+                    Cantidad: 
+                            <input x-ref="cantidad" wire:model.defer="cantidad" type="number" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-4" placeholder="Cantidad" type="number" step="0.01" required>
+                            @error('cantidad')
+                                <p class="text-red text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        
+                        
+                    </div>
+                    <div class="w-full md:w-1/3">
+                        {{$product->medida}}
+                    </div>
+            </div>
                 <div>
                    
                     Lote: 
-                         <input wire:model.defer="lote" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-4" placeholder="lote" required>
+                         <input x-ref="lote" wire:model.defer="lote" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-4" placeholder="lote" required>
                          @error('lote')
                              <p class="text-red text-xs mt-1">{{ $message }}</p>
                          @enderror
@@ -111,7 +92,7 @@
                  </div>
 
                 <div>
-                    <textarea wire:model="description" name="post_description" id="post_description" cols="30" rows="4" class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 border-none px-4 py-2" placeholder="Descripción de movimiento." required></textarea>
+                    <textarea x-ref="description" wire:model="description" name="post_description" id="post_description" cols="30" rows="2" class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 border-none px-4 py-2" placeholder="Descripción de movimiento." required></textarea>
 
                     @error('description')
                         <p class="text-red text-xs mt-1">{{ $message }}</p>
@@ -123,7 +104,7 @@
                         type="submit"
                         class="flex items-center justify-center h-11 w-full md:w-1/2 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3"
                     >
-                        Post Comment
+                        Crear
                     </button>
                    {{--  <button
                         type="button"

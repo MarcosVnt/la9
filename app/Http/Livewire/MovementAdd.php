@@ -38,7 +38,7 @@ class MovementAdd extends Component
         $this->product = $product;
     }
 
-    public function addComment()
+    public function addMovement()
     {
         if (auth()->guest()) {
             abort(Response::HTTP_FORBIDDEN);
@@ -75,9 +75,17 @@ class MovementAdd extends Component
 
         session()->flash('success_message', 'Product was added successfully!');
 
-        $this->reset();
+        $this->reset('movement');
+        $this->description="";
+        $this->cantidad = 0;
+        $this->tipo = "" ; 
+        $this->lote ="" ; 
+        
 
-        return redirect()->route('product.index');
+
+        $this->emit('movementWasAdded', 'Movimiento añadido!');
+
+        //return redirect()->route('product.index');
 
        /*  $this->reset('comment');
  $this->idea->user->notify(new CommentAdded($newComment));

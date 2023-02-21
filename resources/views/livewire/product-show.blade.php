@@ -8,7 +8,7 @@
             </div>
             <div class="w-full mx-2 md:mx-4">
                 <h4 class="text-xl font-semibold mt-2 md:mt-0">
-                    {{ $product->name }}
+                    {{$product->code}} - {{ $product->name }}
                 </h4>
                  <div class="text-gray-600 mt-3">
                  {{--    @admin

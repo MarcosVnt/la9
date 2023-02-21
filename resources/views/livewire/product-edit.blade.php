@@ -74,7 +74,7 @@
                     <div>
                         Precio:
                         <br>
-                        <input wire:model.defer="price" type="number" class="w-1/2 text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-2" placeholder="Tu precio" required>
+                        <input wire:model.defer="price" type="number" step="0.01" class="w-1/2 text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-2" placeholder="Tu precio" required>
                         @error('price')
                             <p class="text-red text-xs mt-1">{{ $message }}</p>
                         @enderror

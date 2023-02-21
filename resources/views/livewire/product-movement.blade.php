@@ -13,7 +13,7 @@ comment-container relative bg-white rounded-xl flex transition duration-500 ease
             @endif --}}
         </div>
         <div class="w-full md:mx-4">
-            <div class="text-gray-600">
+            <div class="flex items-center justify-between mt-6 text-gray-600">
               {{--   @admin
                     @if ($movement->spam_reports > 0)
                         <div class="text-red mb-2">Spam Reports: {{ $movement->spam_reports }}</div>
@@ -25,9 +25,43 @@ comment-container relative bg-white rounded-xl flex transition duration-500 ease
                         Status Changed to "{{ $movement->status->name }}"
                     </h4>
                 @endif --}}
+                <h4 class="text-xl font-semibold mb-3">
+                    Tipo :  "{{ $movement->tipo }}"
+                </h4>
+            
+                @if($movement->tipo==="entrada")
+                <div class="text-green mb-2">Cantidad: {{ $movement->cantidad }}</div>
 
-                <div class="mt-4 md:mt-0">
-                    {!! nl2br(e($movement->description)) !!}
+                @else
+                <div class="text-red mb-2">Cantidad: {{ $movement->cantidad }}</div>
+
+                @endif
+                
+
+            </div>
+
+            <div class="w-full md:mx-4">
+                <div class="flex items-center justify-between mt-6 text-gray-600">
+              
+                
+                    <div class="mt-4 md:mt-0">
+    
+                      
+                        {{ $movement->code}}
+                    
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        
+                        {!! nl2br(e($movement->description)) !!}
+                    
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        
+                        {{ $movement->lote}}
+                    
+                    </div>
+    
+    
                 </div>
             </div>
 

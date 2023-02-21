@@ -65,7 +65,7 @@ class ProductsIndex extends Component
 
            // dd(request()->status);
         return view('livewire.products-index',
-        ['products' => Product::with('user', 'category')
+        ['products' => Product::with('user', 'category','movements')
                /*  ->when(request()->status && request()->status !== 'All', function ($query)  {
                     return $query->where('tipo',request()->status);
                 }) */
@@ -83,9 +83,9 @@ class ProductsIndex extends Component
                   ->when(strlen($this->searchC) >= 3, function ($query) {
                     return $query->where('code', 'like', '%'.$this->searchC.'%');
                 })
-               /*  ->when(strlen($this->search) >= 3, function ($query) {
+               /*   ->when($this->tipo === 'entradas', function ($query) {
                     return $query->where('code', 'like', '%'.$this->search.'%');
-                }) */
+                })  */
                 ->withCount('movements')
                 ->orderBy('id', 'desc')
                 ->simplePaginate()

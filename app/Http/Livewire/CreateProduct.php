@@ -14,7 +14,7 @@ class CreateProduct extends Component
     use WithAuthRedirects;
 
     public $title;
-    public $category = 1;
+    public $category ;
     public $description;
     public $code;
     public $ean ='ean';
@@ -33,7 +33,7 @@ class CreateProduct extends Component
 
         'category' => 'required|integer|exists:categories,id',
         'description' => 'required|min:4',
-        'price' => 'required',
+        //'price' => 'required',
         'medida' => 'required',
         //'status' => 'required|min:4',
 

@@ -149,3 +149,8 @@ git push -u origin main
 git remote add origin https://github.com/MarcosVnt/la9.git
 git branch -M main
 git push -u origin main
+
+
+git push 
+hacer desde msdos no desde gitbash ... 
+
