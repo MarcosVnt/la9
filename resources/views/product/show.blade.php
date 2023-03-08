@@ -28,7 +28,8 @@
     <livewire:product-movements :product="$product" />
 
      <livewire:movement-edit />
- 
+     <livewire:movement-delete />
+
     <x-notification-success />
     
 </x-app-layout>

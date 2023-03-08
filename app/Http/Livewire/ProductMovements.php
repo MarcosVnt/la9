@@ -11,10 +11,17 @@ class ProductMovements extends Component
 
     public $product;
 
-    protected $listeners = ['movementWasAdded'];
+    protected $listeners = ['movementWasAdded','movementWasDeleted'];
 
     public function movementWasAdded(){
         $this->product->refresh();
+
+    }
+
+    public function movementWasDeleted()
+    {
+        $this->product->refresh();
+        $this->goToPage(1);
 
     }
 

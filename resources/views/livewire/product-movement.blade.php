@@ -118,7 +118,8 @@ comment-container relative bg-white rounded-xl flex transition duration-500 ease
                             </li>
                            {{--  @endcan --}}
 
-                         {{--    @can('delete', $movement)
+                         {{--    @can('delete', $movement) --}}
+
                             <li>
                                 <a
                                     href="#"
@@ -128,10 +129,10 @@ comment-container relative bg-white rounded-xl flex transition duration-500 ease
                                     "
                                     class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3"
                                 >
-                                    Delete Movement
+                                    Borrar Movimiento
                                 </a>
                             </li>
-                            @endcan
+                           {{--  @endcan 
 
                             <li>
                                 <a

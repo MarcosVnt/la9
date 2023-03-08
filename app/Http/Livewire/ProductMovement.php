@@ -19,6 +19,7 @@ class ProductMovement extends Component
         $this->movement->refresh();
     }
 
+    
 
 
     public function mount(Movement $movement, $productUserId)

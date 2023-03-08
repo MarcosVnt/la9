@@ -174,7 +174,12 @@ delete coment
 
 php artisan livewire:make MovementDelete
 
+product-movement 
+       setDeleteMovement
+            MovementDelete
 
+        product/show.blade.php 
+                movement-delete
 
 
 

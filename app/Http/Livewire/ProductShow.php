@@ -12,7 +12,7 @@ class ProductShow extends Component
 
     protected $listeners = [
        
-        'productWasUpdated',
+        'productWasUpdated','movementWasDeleted'
     ];
 
 
@@ -30,6 +30,12 @@ class ProductShow extends Component
     {
         $this->product->refresh();
     }
+
+    public function movementWasDeleted()
+    {
+        $this->product->refresh();
+    }
+
 
 
 
