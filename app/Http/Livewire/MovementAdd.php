@@ -25,17 +25,25 @@ class MovementAdd extends Component
     public $status;
     public $lote;
     public $comment;
+    public $category_name;
+    public $metros = 0 ;
+    public $conversion;
+    public $pintada = 0 ;
+    public $pintada_tipo;
+    public $medida;
 
     protected $rules = [
         'tipo' => 'required|min:4',
-        'description' => 'required|min:4',
-        'cantidad' => 'required|min:1',
+       
+        'cantidad' => 'required',
      
     ];
 
     public function mount(Product $product)
     {
         $this->product = $product;
+        $this->category_name= $this->product->category->name;
+        //dd($this->product->category->name);
     }
 
     public function addMovement()
@@ -53,8 +61,17 @@ class MovementAdd extends Component
             'product_id' => $this->product->id,
             'description' => $this->description,
             'cantidad' => $this->cantidad,
+            'medida' => $this->medida,
+            
             'lote' => $this->lote,
             'status' => '1',
+           
+          
+            'metros' => $this->metros,
+    
+            'pintada_tipo' => $this->pintada_tipo,
+            'pintada' => $this->pintada,
+
             //'body' => $this->comment,
         ]);
 
@@ -73,17 +90,19 @@ class MovementAdd extends Component
         'lote' => $this->faker->name(), */
 
 
-        session()->flash('success_message', 'Product was added successfully!');
+        session()->flash('success_message', 'Producto Añadido Correctamente!');
 
         $this->reset('movement');
         $this->description="";
         $this->cantidad = 0;
         $this->tipo = "" ; 
         $this->lote ="" ; 
+        $this->pintada = 0 ; 
+        $this->metros=0;
         
 
 
-        $this->emit('movementWasAdded', 'Movimiento añadido!');
+        $this->emit('movementWasAdded', 'Movimiento añadido Correctamente!');
 
         //return redirect()->route('product.index');
 
@@ -91,6 +110,15 @@ class MovementAdd extends Component
  $this->idea->user->notify(new CommentAdded($newComment));
 
         $this->emit('commentWasAdded', 'Comment was posted!'); */
+    }
+
+
+    public function calcularCantidad($pintada, $metros){
+  //  dd($pintada, $metros);
+        $this->cantidad = ($this->pintada * $this->metros);
+        /* $this->pintada = $pintada;
+        $this->metros = $metros; */
+
     }
 
     

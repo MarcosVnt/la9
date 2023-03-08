@@ -7,7 +7,7 @@ use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithPagination;
 use App\Http\Livewire\Traits\WithAuthRedirects;
-
+use Illuminate\Support\Facades\DB;
 
 class ProductsIndex extends Component
 {
@@ -86,6 +86,22 @@ class ProductsIndex extends Component
                /*   ->when($this->tipo === 'entradas', function ($query) {
                     return $query->where('code', 'like', '%'.$this->search.'%');
                 })  */
+
+              /*   ->withCount([
+                    'movements as suma_ventas' => function ($query) {
+                                $query->select(DB::raw("SUM(cantidad) as vta"))->where('tipo', 'ventas');
+                            }
+                        ]) */
+
+                      /*   ->withCount([
+                            'movements' => fn ($query) => $query
+                                ->where('created_at', '>=', $dateTo)
+                        ]) */
+
+                        ->withSum(['movements as entradas' => fn ($query) => $query->where('tipo', '=', 'entrada')], 'cantidad')
+
+                        ->withSum(['movements as salidas' => fn ($query) => $query->where('tipo', '=', 'salida')], 'cantidad')
+
                 ->withCount('movements')
                 ->orderBy('id', 'desc')
                 ->simplePaginate()

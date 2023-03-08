@@ -17,20 +17,20 @@
             
           
             <div>
-                <input wire:model.defer="code" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-1" placeholder="Tu Codigo" required>
+                <input wire:model.defer="code" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-1" placeholder="RAL" required>
                 @error('code')
                     <p class="text-red text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
             <div>
-                <input wire:model.defer="name" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-1" placeholder="Tu Producto" required>
+                <input wire:model.defer="name" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-1" placeholder="Descripción" required>
                 @error('name')
                     <p class="text-red text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
             <div>
-                <input wire:model.defer="price" type="number" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-1" placeholder="Tu precio" step="0.01" >
+                <input wire:model.defer="price" type="number" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-1" placeholder="Precio" step="0.01" >
                 @error('price')
                     <p class="text-red text-xs mt-1">{{ $message }}</p>
                 @enderror
@@ -44,11 +44,12 @@
                     @endforeach
                 </select>
             </div>
+            
             @error('medida')
                 <p class="text-red text-xs mt-1">{{ $message }}</p>
             @enderror
             <div>
-                <textarea wire:model.defer="description" name="idea" id="idea" cols="30" rows="2" class="w-full bg-gray-100 rounded-xl border-none placeholder-gray-900 text-sm px-4 py-2 mb-1" placeholder="Descripción Producto" required></textarea>
+                <textarea wire:model.defer="description" name="idea" id="idea" cols="30" rows="2" class="w-full bg-gray-100 rounded-xl border-none placeholder-gray-900 text-sm px-4 py-2 mb-1" placeholder="Descripción Producto" ></textarea>
                 @error('description')
                     <p class="text-red text-xs mt-1">{{ $message }}</p>
                 @enderror

@@ -6,7 +6,14 @@
 {{--                     <img src="{{ $product->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
  --}}                </a>
             </div>
-            <div class="w-full mx-2 md:mx-4">
+            <div class="w-full flex flex-col justify-between  mx-2 md:mx-4">
+                <div class="text-gray-600 mt-3 flex flex-row justify-end">
+                    <div class="text-xl text-blue font-semibold mt-2 md:mt-0">
+                      {{$product->category->name}}
+                    </div>
+    
+                </div>
+
                 <h4 class="text-xl font-semibold mt-2 md:mt-0">
                     {{$product->code}} - {{ $product->name }}
                 </h4>
@@ -18,6 +25,25 @@
                     @endadmin --}}
                     {!! nl2br(e($product->description)) !!}
                 </div> 
+
+              
+
+               
+
+                <div class="text-gray-600 mt-3 flex flex-row justify-end">
+                    {{--  @admin @endadmin --}}
+                         @if ($product->entradas > 0)
+                             <div class="text-green mb-2 ml-4">Entradas: {{ $product->entradas }}</div>
+                         @endif
+                         @if ($product->salidas > 0)
+                              <div class="text-red mb-2 ml-4">Salidas: {{ $product->salidas }}</div>
+                         @endif
+                         @if ($product->entradas > 0 || $product->salidas)
+                              <div class="text-blue mb-2 ml-4 font-bold">Stock: {{ $product->entradas -$product->salidas }}</div>
+                          @endif
+                    
+                 
+                 </div>
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
                     <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">

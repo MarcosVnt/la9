@@ -35,6 +35,8 @@ class ProductShow extends Component
 
     public function render()
     {
-        return view('livewire.product-show');
+        
+        return view('livewire.product-show',['marcos' => Product::withSum(['movements as entradas' => fn ($query) => $query->where('tipo', '=', 'entrada')], 'cantidad')->withSum(['movements as salidas' => fn ($query) => $query->where('tipo', '=', 'salida')], 'cantidad')
+]);
     }
 }

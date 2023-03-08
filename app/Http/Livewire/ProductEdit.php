@@ -41,13 +41,13 @@ class ProductEdit extends Component
     }
 
     protected $rules = [
-        'code' => 'required|min:4',
+        'code' => 'required|min:2',
         'name' => 'required',
         // 'ean' => 'required|min:4',
 
         'category' => 'required|integer|exists:categories,id',
-        'description' => 'required|min:4',
-        'price' => 'required',
+       // 'description' => 'required|min:4',
+       // 'price' => 'required',
         'medida' => 'required',
         //'status' => 'required|min:4',
 

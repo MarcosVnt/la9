@@ -134,6 +134,52 @@ php artisan livewire:make MovementEdit
 
 
 
+P
+
+
+
+categorias 
+listado
+php artisan livewire:make Category
+
+category/index.blade.php
+category.create
+category.update
+
+
+28-2-23
+formulario alta movimientos
+es entrada o salida
+filtro x tipo y muestro en funcion de ....
+
+
+
+7-3-23
+Edit idea/movement
+
+product/show 
+movementEdit.php 
+
+product-movement
+    setEditMovement  $movement->id 
+        movemenEdit 
+            editMovementWasSet
+                movement-edit.blade
+                    focus  cantidad
+
+
+
+
+delete coment 
+
+php artisan livewire:make MovementDelete
+
+
+
+
+
+
+
 
 
 

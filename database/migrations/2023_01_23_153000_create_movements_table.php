@@ -24,10 +24,17 @@ return new class extends Migration
             $table->unsignedBigInteger('clieprov_id');
             $table->unsignedBigInteger('user_id');
 
+            $table->decimal('pintada', 12, 5);
+            $table->string('pintada_tipo')->nullable();//ml o m2
+
+            $table->string('metros'); // valor de ml o m2 
+            $table->string('medida')->nullable(); // del producto 
+
+
 
             $table->decimal('cantidad', 12, 5);
             $table->boolean('status');
-            $table->string('lote');
+            $table->string('lote')->nullable();
 
 
             $table->timestamps();

@@ -25,15 +25,21 @@ comment-container relative bg-white rounded-xl flex transition duration-500 ease
                         Status Changed to "{{ $movement->status->name }}"
                     </h4>
                 @endif --}}
-                <h4 class="text-xl font-semibold mb-3">
-                    Tipo :  "{{ $movement->tipo }}"
-                </h4>
-            
+             
+                <div class="rounded-full border bg-blue-100 px-3 py-1 pr-2 text-xl font-semibold"> {{ $movement->tipo }}
+
+                </div>
                 @if($movement->tipo==="entrada")
                 <div class="text-green mb-2">Cantidad: {{ $movement->cantidad }}</div>
 
                 @else
-                <div class="text-red mb-2">Cantidad: {{ $movement->cantidad }}</div>
+                    @if($movement->metros==="5")
+                        <div class="text-green mb-2">  {{ $movement->pintada }} Ml  pintados</div>
+                    @else
+                         <div class="text-green mb-2"> {{ $movement->pintada }} M2  pintados </div>
+    
+                    @endif
+                <div class="text-red mb-2">  {{ $movement->cantidad }} kg gastados</div>
 
                 @endif
                 
@@ -70,10 +76,10 @@ comment-container relative bg-white rounded-xl flex transition duration-500 ease
                     <div class="@if ($movement->is_status_update) text-blue @endif font-bold text-gray-900">{{ $movement->user->name }}</div>
                     <div>&bull;</div>
                     {{-- @if ($movement->user->id === $movement->idea->user->id) --}}
-                    @if ($movement->user->id === $productUserId)
+                  {{--   @if ($movement->user->id === $productUserId)
                         <div class="rounded-full border bg-gray-100 px-3 py-1">OP</div>
                         <div>&bull;</div>
-                    @endif
+                    @endif --}}
                     <div>{{ $movement->created_at->diffForHumans() }}</div>
                 </div>
                 @auth

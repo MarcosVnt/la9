@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained();
-            $table->string('code')->nullable();
+            $table->string('code');
             $table->string('ean')->nullable();
 
             $table->string('name')->nullable();
             $table->mediumText('description')->nullable();
-            $table->decimal('price', 8, 3);
+            $table->decimal('price', 8, 3)->nullable();
             $table->string('medida')->nullable();
             $table->boolean('status');
 

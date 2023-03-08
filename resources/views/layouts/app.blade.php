@@ -25,7 +25,12 @@
                 @if (Route::has('login'))
                     <div class="px-6 py-4">
                         @auth
+                       
                             <div class="flex items-center space-x-4">
+                                <a href="{{ route('product.index') }}" class="text-sm text-gray-700 underline">Inicio</a>
+
+                                <a href="{{ route('category.index') }}" class="text-sm text-gray-700 underline">Categorias</a>
+
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 

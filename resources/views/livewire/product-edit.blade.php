@@ -74,7 +74,7 @@
                     <div>
                         Precio:
                         <br>
-                        <input wire:model.defer="price" type="number" step="0.01" class="w-1/2 text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-2" placeholder="Tu precio" required>
+                        <input wire:model.defer="price" type="number" step="0.01" class="w-1/2 text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2 mb-2" placeholder="Tu precio" >
                         @error('price')
                             <p class="text-red text-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -89,7 +89,7 @@
                         <p class="text-red text-xs mt-1">{{ $message }}</p>
                     @enderror
                     <div>
-                        <textarea wire:model.defer="description" name="idea" id="idea" cols="30" rows="4" class="w-full bg-gray-100 rounded-xl border-none placeholder-gray-900 text-sm px-4 py-2 mb-2" placeholder="Describe your idea" required></textarea>
+                        <textarea wire:model.defer="description" name="idea" id="idea" cols="30" rows="4" class="w-full bg-gray-100 rounded-xl border-none placeholder-gray-900 text-sm px-4 py-2 mb-2" placeholder="Describe your idea" ></textarea>
                         @error('description')
                             <p class="text-red text-xs mt-1">{{ $message }}</p>
                         @enderror

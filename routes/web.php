@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [ProductController::class, 'index'])->name('product.index');
 Route::get('/products/{product:id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
 
 
 

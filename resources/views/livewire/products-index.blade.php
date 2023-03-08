@@ -1,6 +1,6 @@
 <div>
     <div class="filters flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-6">
-        <div class="w-full md:w-1/3">
+        <div class="w-full md:w-2/3">
             <select wire:model="category" name="category" id="category" class="w-full rounded-xl border-none px-4 py-2">
                 <option value="All Categories">All Categories</option>
                 @foreach ($categories as $category)
@@ -8,7 +8,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="w-full md:w-1/3">
+        <div class="w-full md:w-2/3">
             <select wire:model="filter" name="other_filters" id="other_filters" class="w-full rounded-xl border-none px-4 py-2">
                 <option value="No Filter">No Filter</option>
                 <option value="Top Movimientos">Top Movimientos</option>
@@ -36,13 +36,18 @@
           </div>
       </div>
     </div> <!-- end filters -->
-
     <div class="products-container space-y-6 my-8">
         @forelse ($products as $product)
        
+       {{--  {{$product->entrada}}
+        {{$product->salida}} --}}
+        
+
             <livewire:product-index
                 :key="$product->id"
                 :product="$product"
+                :entradas="$product->entradas"
+                :salidas="$product->salidas"
                 :votesCount="$product->movements_count"
             />  
 

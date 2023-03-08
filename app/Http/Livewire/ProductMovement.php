@@ -12,6 +12,15 @@ class ProductMovement extends Component
     public $productUserId;
 
 
+    protected $listeners = ['movementWasUpdated'];
+
+    public function movementWasUpdated()
+    {
+        $this->movement->refresh();
+    }
+
+
+
     public function mount(Movement $movement, $productUserId)
     {
         $this->movement = $movement;

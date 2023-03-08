@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Movement;
 use Livewire\Component;
+use App\Models\Movement;
+use Illuminate\Http\Response;
 
 class MovementEdit extends Component
 {
-    public Movement $movement; 
+    //public Movement $movement; 
+
+    public $movement;
     
     public $tipo ;
     public $description;
@@ -19,16 +22,24 @@ class MovementEdit extends Component
     public $lote;
     public $product;
     public $medida; 
+    public $pintada  ;
+    public $metros ; 
+    public $product_name;
+    public $product_code;
+    
+
 
     protected $rules = [
         'tipo' => 'required|min:4',
-        'description' => 'required|min:4',
+       // 'description' => 'required|min:4',
         'cantidad' => 'required|min:1',
      
     ];
 
 
     protected $listeners=['setEditMovement'];
+
+    
 
     public function setEditMovement($movementId)
 
@@ -43,12 +54,54 @@ class MovementEdit extends Component
         $this->product = $this->movement->product;
         $this->tipo = $this->movement->tipo;
         $this->medida = $this->movement->product->medida;
+        $this->product_name = $this->movement->product->name;
+        $this->product_code = $this->movement->product->code;
+        $this->pintada = $this->movement->pintada;
+        $this->metros = $this->movement->metros;
+        
         
 
        // dd($this->movement->id);
 
         $this->emit('editMovementWasSet');
     }
+
+    public function calcularCantidad($pintada, $metros){
+        //  dd($pintada, $metros);
+              $this->cantidad = ($this->pintada * $this->metros);
+              /* $this->pintada = $pintada;
+              $this->metros = $metros; */
+      
+          }
+
+
+    public function updateMovement()
+          {
+               
+              /* || auth()->user()->cannot('update', $this->comment))  */
+              
+              if (auth()->guest()){
+                  abort(Response::HTTP_FORBIDDEN);
+              }
+      
+              $this->validate();
+
+
+             $this->movement->description =  $this->description ;
+             $this->movement->cantidad = $this->cantidad ;
+             $this->movement->lote =  $this->lote ;
+            
+             $this->movement->pintada =  $this->pintada ;
+             $this->movement->metros = $this->metros;
+
+      
+            
+              $this->movement->save();
+      
+              $this->emit('movementWasUpdated', 'Movimiento Actualizado');
+          }
+
+
 
     public function render()
     {

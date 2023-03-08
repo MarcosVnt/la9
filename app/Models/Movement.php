@@ -22,5 +22,14 @@ class Movement extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function entradas()
+    {
+
+    }
+
+   /*  public function salidas(){
+        $this->product->withSum(['movements as entradas' => fn ($query) => $query->where('tipo', '=', 'entrada')], 'cantidad')
+
+    } */
   
 }
